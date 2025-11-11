@@ -27,6 +27,8 @@ class WrightFisherModel:
         if not self.has_mutation:
             p = j / self.N
         else:
+            # With mutation (equation 3.4)
+            # $p = \frac{j (1 - \alpha) + (N - j) \beta}{N}$
             p = (j * (1 - self.alpha) + (self.N - j) * self.beta) / self.N
         return p
     
