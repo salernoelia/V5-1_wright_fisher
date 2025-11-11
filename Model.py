@@ -3,21 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import binom, poisson
 
 class WrightFisherModel:
-    """Wright-Fisher model for genetic drift with optional mutation"""
     
     def __init__(self, population_size: int, alpha: float = 0, beta: float = 0):
-        """
-        Initialize Wright-Fisher model
-        
-        Parameters:
-        -----------
-        population_size : int
-            Total population size (2N)
-        alpha : float
-            Mutation rate a -> A (default 0)
-        beta : float
-            Mutation rate A -> a (default 0)
-        """
         self.N = population_size
         self.alpha = alpha
         self.beta = beta
@@ -33,9 +20,7 @@ class WrightFisherModel:
         return p
     
     def step(self, current_a_genes):
-        """Perform one generation step"""
         p = self.get_transition_prob(current_a_genes)
-        # Binomial sampling for next generation
         next_a_genes = np.random.binomial(self.N, p)
         return next_a_genes
     
